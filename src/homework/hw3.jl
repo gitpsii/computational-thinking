@@ -551,15 +551,20 @@ We will train our model on the novel [_Emma_ (1815), by Jane Austen](https://en.
 
 # ╔═╡ b7601048-fb57-11ea-0754-97dc4e0623a1
 emma = let
-	raw_text = read(download("https://ia800303.us.archive.org/24/items/EmmaJaneAusten_753/emma_pdf_djvu.txt"), String)
+	# 1. Download the stable raw UTF-8 content
+	raw_text = read(download("https://www.gutenberg.org/files/158/158-0.txt"), String)
 	
-	first_words = "Emma Woodhouse"
-	last_words = "THE END"
-	start_index = findfirst(first_words, raw_text)[1]
-	stop_index = findlast(last_words, raw_text)[end]
+	# 2. Look for keywords present in Gutenberg's text layout
+	start_match = findfirst("VOLUME I", raw_text)
+	stop_match = findlast("CHAPTER LVs", raw_text) # Target the final chapter indicator
 	
-	raw_text[start_index:stop_index]
+	# 3. Clean extraction with safety checks to prevent MethodErrors
+	start_idx = !isnothing(start_match) ? start_match[1] : 1
+	stop_idx = !isnothing(stop_match) ? stop_match[end] : lastindex(raw_text)
+	
+	raw_text[start_idx:stop_idx]
 end;
+
 
 # ╔═╡ cc42de82-fb5a-11ea-3614-25ef961729ab
 function splitwords(text)
@@ -597,7 +602,13 @@ gives
 """
 
 # ╔═╡ 91e87974-fb78-11ea-3ce4-5f64e506b9d2
-
+function bigrams(words)
+	starting_positions = 1:length(words)-1
+	
+	map(starting_positions) do i
+		words[i:i+1]
+	end
+end
 
 # ╔═╡ 9f98e00e-fb78-11ea-0f6c-01206e7221d6
 bigrams([1, 2, 3, 42])
@@ -623,7 +634,13 @@ ngrams([1, 2, 3, 42], 2) == bigrams([1, 2, 3, 42])
 """
 
 # ╔═╡ 7be98e04-fb6b-11ea-111d-51c48f39a4e9
-
+function ngrams(words, n)
+		starting_positions = 1:(length(words)-n+1)
+	
+	map(starting_positions) do i
+		words[i:i+n-1]
+	end
+end
 
 # ╔═╡ 052f822c-fb7b-11ea-382f-af4d6c2b4fdb
 ngrams([1, 2, 3, 42], 3)
@@ -691,7 +708,19 @@ Dict(
 """
 
 # ╔═╡ 8ce3b312-fb82-11ea-200c-8d5b12f03eea
-
+function word_counts(words::Vector)
+	counts = Dict()
+	for i in words
+		if !haskey(counts, i)
+			counts[i] = 1
+		else
+			counts[i] += 1
+		end
+	end
+	
+	return counts
+	e = counts["Emma"]
+end
 
 # ╔═╡ a2214e50-fb83-11ea-3580-210f12d44182
 word_counts(["to", "be", "or", "not", "to", "be"])
@@ -702,7 +731,7 @@ md"""
 """
 
 # ╔═╡ 953363dc-fb84-11ea-1128-ebdfaf5160ee
-emma_count = counts["Emma"]
+emma_count = ...
 
 # ╔═╡ 294b6f50-fb84-11ea-1382-03e9ab029a2d
 md"""
