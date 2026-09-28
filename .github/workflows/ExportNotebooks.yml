@@ -39,8 +39,8 @@ jobs:
             - name: 📅 Checkout Fall20, Spring21, Fall22, Fall23 output
               uses: actions/checkout@v6
               with:
-                  path: Fall23-output
-                  ref: Fall23-output
+                  path: Fall24
+                  ref: Fall24
 
             - name: 🪴 Generate site
               run: |
