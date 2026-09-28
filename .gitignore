@@ -1,0 +1,20 @@
+
+.DS_Store
+
+reduced_phil.png
+notebooks/week9/testCSVwrite.csv
+
+_cache
+_site
+generation_report.html
+src/week9/testCSVwrite.csv
+
+.vscode/
+extra_outputs/
+pluto-deployment-environment/
+tools/
+Dockerfile
+Procfile
+netlify.toml
+develop.jl
+Website maintenance.md
