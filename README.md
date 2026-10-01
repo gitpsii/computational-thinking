@@ -23,30 +23,6 @@ The repository covers topics including:
 
 A major part of the course is not just writing code, but understanding **how a computational representation of a problem connects to the underlying mathematics**.
 
-## Repository Structure
-
-```text
-computational-thinking/
-│
-├── homework/
-│   ├── hw1/
-│   ├── hw2/
-│   └── ...
-│
-├── exercises/
-│   └── ...
-│
-├── projects/
-│   └── ...
-│
-├── images/
-│   └── ...
-│
-└── README.md
-```
-
-The exact structure follows the progression of the coursework, with individual files containing my implementations and solutions.
-
 ## Some Topics I've Worked With
 
 ### Image Processing
