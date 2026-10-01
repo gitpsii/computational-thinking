@@ -89,7 +89,7 @@ A huge thank you to the instructors of **MIT 18.S191: Introduction to Computatio
 
 ### 🐾 Mascot Spotlight: Philip the Corgi
 No 18.S191 repository is complete without paying respect to the hardest-working image subject in computational science. Thank you, Philip, for bravely letting us blur, decimate, and turn you into a kaleidoscope for the sake of education!
-<img width="400" height="264" alt="philip" src="https://github.com/user-attachments/assets/9de772bf-836f-49f5-b6db-454de9c7dd3b" />
+<img width="250" height="264" alt="philip" src="https://github.com/user-attachments/assets/9de772bf-836f-49f5-b6db-454de9c7dd3b" />
 
 
 *Disclaimer: This repository contains my personal solutions, notes, and implementations for the course. It is not officially affiliated with MIT.*
