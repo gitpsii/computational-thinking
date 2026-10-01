@@ -57,21 +57,6 @@ The course also connects programming directly with mathematical concepts. Implem
 
 The goal is to understand the computation rather than treating numerical routines as black boxes.
 
-## Julia
-
-The primary language used in this repository is **Julia**.
-
-Some Julia concepts that come up repeatedly include:
-
-```julia
-f(x) = x^2
-
-xs = [1, 2, 3, 4]
-
-ys = f.(xs)
-```
-
-In particular, I have been learning how Julia's broadcasting, multiple dispatch, array operations, and performance-oriented design make it well suited for scientific computing.
 
 ## Course
 
